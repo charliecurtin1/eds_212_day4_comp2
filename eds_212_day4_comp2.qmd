@@ -2,6 +2,8 @@
 title: "eds_212_day4_comp2"
 format: html
 editor: visual
+execute: 
+  warning: FALSE
 ---
 
 ## my change
@@ -52,4 +54,28 @@ penguins %>%
   GGally::ggpairs(aes(color = species)) +
   scale_colour_manual(values = c("darkorange","purple","cyan4")) +
   scale_fill_manual(values = c("darkorange","purple","cyan4"))
+```
+
+making more exploratory charts in ggplot2
+
+histogram
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) +
+  geom_histogram(fill = "purple",
+                 color = "orange") +
+  theme_minimal()
+```
+
+box plot
+
+```{r}
+ggplot(data = penguins,
+       aes(x = species,
+           y = bill_length_mm)) +
+  geom_boxplot(fill = "blue", 
+               color = "orange") +
+  geom_jitter(aes(size = bill_depth_mm, color = bill_depth_mm), 
+              alpha = 0.5) + 
+  theme_dark()
 ```
