@@ -5,3 +5,51 @@ editor: visual
 ---
 
 ## my change
+
+```{r}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+Basic data exploration
+
+-   names: get variable names
+
+-   dim: data dimensions
+
+-   head: get first n lines (6 by default)
+
+-   tail: get last n lines (6 by default)
+
+-   summary: get basic summary statistic
+
+```{r}
+names(penguins)
+
+dim(penguins)
+
+head(penguins)
+
+tail(penguins)
+
+summary(penguins)
+```
+
+```{r}
+# data exploration tool
+skim(penguins)
+```
+
+```{r}
+ggpairs(penguins)
+```
+
+```{r}
+penguins %>%
+  select(species, body_mass_g, ends_with("_mm")) %>% 
+  GGally::ggpairs(aes(color = species)) +
+  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"))
+```
